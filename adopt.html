@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adopt a Great Pyrenees | Available Dogs | GPRS</title><meta name="description" content="Browse 46 Great Pyrenees and Pyr mixes available for adoption from Great Pyrenees Rescue Society.">
+<meta property="og:title" content="Adopt a Great Pyrenees | Available Dogs | GPRS"><meta property="og:description" content="Browse 46 Great Pyrenees and Pyr mixes available for adoption from Great Pyrenees Rescue Society."><meta property="og:image" content="img/og-logo.jpg"><meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NGO","name":"Great Pyrenees Rescue Society","alternateName":"GPRS","foundingDate":"2006","email":"info@greatpyreneesrescuesociety.org","address":{"@type":"PostalAddress","addressLocality":"Spring","addressRegion":"TX","postalCode":"77388","addressCountry":"US"},"sameAs":["https://www.facebook.com/rescuegreatpyrs","https://www.instagram.com/GreatPyreneesRescueSocietyinc/","https://www.youtube.com/@gprspyrs"]}</script>
+</head><body><a class="skip" href="#main">Skip to content</a>
+<div class="topbar">Watch our dogs <b>live on Facebook every Sunday at 3pm CT</b>. <a href="https://www.facebook.com/rescuegreatpyrs" target="_blank" rel="noopener">Tune in →</a></div>
+<header class="site"><div class="wrap nav"><a class="brand" href="index.html"><img src="img/logo.png" alt="" width="52" height="52"><span><b>Great Pyrenees<br>Rescue Society</b><small>Est. 2006 · 501(c)(3) · Texas</small></span></a>
+<button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+<ul class="menu" id="menu"><li><a href="index.html">Home</a></li><li><a href="adopt.html" aria-current=page>Adopt</a></li><li><a href="process.html">How to adopt</a></li><li><a href="foster.html">Foster</a></li><li><a href="volunteer.html">Volunteer</a></li><li><a href="breed.html">The breed</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a class="btn btn-donate btn-sm" href="donate.html">Donate</a></li></ul></div></header>
+<main id="main">
+<section class="page-hero"><div class="wrap"><span class="eyebrow">Available dogs</span><h1>Find your Pyr-fect match</h1>
+<p class="lead">Each dog has a personality and preferences of their own, so we match dogs with families thoughtfully. Browse below, then open a profile for the full story, photos and adoption fee.</p>
+<div class="btns"><a class="btn btn-primary" href="https://gprs.rescuegroups.org/forms/form?formid=6206" target="_blank" rel="noopener">Start your application</a><a class="btn btn-ghost" href="process.html">How adoption works</a></div></div></section>
+<section style="padding-top:20px"><div class="wrap">
+<div class="notice">Listings come from our RescueGroups.org database (snapshot from <span id="upd"></span>). For live, up-to-the-minute availability, see the <a href="https://gprs.rescuegroups.org/animals/browse?Species=Dog" target="_blank" rel="noopener">full list</a>. <span class="ph">[Developer: connect the RescueGroups API so this page updates automatically]</span></div>
+<form class="filters" id="filters" onsubmit="return false"><label>Search<input id="q" type="search" placeholder="Name or breed"></label>
+<label>Age<select id="age"><option value="">Any age</option><option>Baby</option><option>Young</option><option>Adult</option><option>Senior</option></select></label>
+<label>Sex<select id="sex"><option value="">Any</option><option>Female</option><option>Male</option></select></label>
+<label>Breed<select id="pyr"><option value="">All dogs</option><option value="1">Great Pyrenees &amp; Pyr mixes</option><option value="0">Other breeds</option></select></label>
+<label>Located in<select id="st"><option value="">Anywhere</option></select></label><span class="count" id="count" aria-live="polite"></span></form>
+<div class="dogs" id="dogs"></div>
+<noscript><p>See all dogs on <a href="https://gprs.rescuegroups.org/animals/browse?Species=Dog">our RescueGroups listing</a>.</p></noscript>
+</div></section>
+<section class="sand"><div class="wrap split"><img src="img/foster-puppy.jpg" alt="A happy Great Pyrenees puppy on a hammock" loading="lazy">
+<div><span class="eyebrow">Not sure yet?</span><h2>Try foster-to-adopt</h2><p>If you're not sure you're ready to adopt permanently, you can foster first. The dog lives with you until they're adopted, and if you fall in love, you can apply to adopt them before anyone else is approved.</p><a class="btn btn-ghost" href="foster.html">Learn about fostering</a></div></div></section>
+<script src="assets/dogs.js"></script>
+<script>
+const D=window.GPRS_DOGS,el=id=>document.getElementById(id),esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+el('upd').textContent=window.GPRS_DOGS_UPDATED;
+[...new Set(D.map(d=>d.st).filter(Boolean))].sort().forEach(s=>el('st').insertAdjacentHTML('beforeend',`<option>${s}</option>`));
+function card(d){const tags=`<span class="tag">${d.group||'Adult'}</span><span class="tag">${d.sex}</span>`+(/bonded/i.test(d.name)?'<span class="tag red">Bonded pair</span>':'');
+const meta=[d.breed,d.age,d.weight,d.loc].filter(Boolean).join(' · ');const fee=d.fee?` · Fee ${esc(d.fee)}`:'';
+return `<article class="dog"><a href="${d.url}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${d.img}" alt="${esc(d.name)}, ${esc(d.breed)}" loading="lazy" width="400" height="400"></a><div class="body"><div class="tags">${tags}</div><h3>${esc(d.name)}</h3><div class="meta">${esc(meta)}${fee}</div><p>${esc(d.desc.slice(0,160).replace(/\s\S*$/,''))}…</p><div class="actions"><a class="btn btn-primary btn-sm" href="${d.url}" target="_blank" rel="noopener">Meet ${esc(d.name.split(',')[0])}</a></div></div></article>`}
+function render(){const q=el('q').value.toLowerCase(),a=el('age').value,s=el('sex').value,p=el('pyr').value,st=el('st').value;
+const r=D.filter(d=>(!q||(d.name+' '+d.breed).toLowerCase().includes(q))&&(!a||d.group===a)&&(!s||d.sex===s)&&(!p||String(+d.pyr)===p)&&(!st||d.st===st));
+el('dogs').innerHTML=r.map(card).join('')||'<p>No dogs match those filters. Try widening your search.</p>';el('count').textContent=r.length+' of '+D.length+' dogs';}
+el('filters').addEventListener('input',render);render();
+</script></main>
+<footer class="site"><div class="wrap"><div class="fgrid">
+<div><div class="fbrand"><img src="img/logo.png" alt="" width="56" height="56"><b>Great Pyrenees<br>Rescue Society</b></div>
+<p>A volunteer-run, foster-based 501(c)(3) rescue saving Great Pyrenees in Texas since 2006. 100% of donations go to the dogs.</p>
+<p>EIN: <span class="ph">[Add EIN]</span></p>
+<div class="social"><a href="https://www.facebook.com/rescuegreatpyrs" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/GreatPyreneesRescueSocietyinc/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@gprspyrs" target="_blank" rel="noopener">YouTube</a></div></div>
+<div><h4>Adopt</h4><ul><li><a href="adopt.html">Available dogs</a></li><li><a href="process.html">Adoption process</a></li><li><a href="https://gprs.rescuegroups.org/forms/form?formid=6206" target="_blank" rel="noopener">Adoption application</a></li><li><a href="breed.html">About the breed</a></li></ul></div>
+<div><h4>Help</h4><ul><li><a href="foster.html">Foster</a></li><li><a href="volunteer.html">Volunteer</a></li><li><a href="donate.html">Donate</a></li><li><a href="https://www.bonfire.com/store/gprs/" target="_blank" rel="noopener">Merch store</a></li><li><a href="https://gprs.rescuegroups.org/forms" target="_blank" rel="noopener">All forms</a></li></ul></div>
+<div><h4>Contact</h4><ul><li><a href="mailto:info@greatpyreneesrescuesociety.org">info@greatpyreneesrescuesociety.org</a></li><li>Spring, TX 77388</li><li><a href="https://www.facebook.com/rescuegreatpyrs" target="_blank" rel="noopener">Message us on Facebook</a></li><li><a href="contact.html#surrender">Owner surrender</a></li></ul></div>
+</div><div class="legal"><span>© 2026 Great Pyrenees Rescue Society. Spay and neuter your pets.</span><span>Dog listings powered by RescueGroups.org</span></div></div></footer>
+<script>const t=document.querySelector('.menu-toggle'),m=document.getElementById('menu');t.addEventListener('click',()=>{const o=m.classList.toggle('open');t.setAttribute('aria-expanded',o)});</script>
+</body></html>
